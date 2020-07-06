@@ -1,0 +1,12 @@
+@import url(./_name/form__input_name.css);
+@import url(./_about-me/form__input_about-me.css);
+
+.form__input {
+    border: none;
+    font-family: Inter;
+    font-style: normal;
+    font-weight: normal;
+    font-size: 14px;
+    line-height: 17px;
+    color: #000000;
+}

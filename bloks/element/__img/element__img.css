@@ -1,0 +1,6 @@
+.element__img {
+    object-fit: cover;
+    justify-self: center;
+    max-width: 282px;
+    height: 282px;
+}
