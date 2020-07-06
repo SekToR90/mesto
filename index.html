@@ -1,0 +1,117 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+  <meta charset="UTF-8">
+  <link rel="stylesheet" href="./pages/index.css">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">  
+  <title>Mesto</title>
+</head>
+<body class="page">
+    <div class="page__container">
+        <header class="header">
+          <div class="header__logo"></div> 
+          <div class="header__line"></div>
+        </header>
+        <main class="content">
+          <section class="profile">
+            <div class="profile__container">
+              <img class="profile__avatar" src="./images/Avatar.jpg" alt="Аватар">
+              <div class="profile__info">
+                <div class="profile__info-button">
+                  <h1 class="profile__title">Жак-Ив Кусто</h1>
+                  <button class="profile__edit-button">
+                    <img class="profile__edit-img" src="./images/profile-pencil.svg" alt="Кнопка_редактирования">
+                  </button>
+                </div>
+                <p class="profile__subtitle">Исследователь океана</p>
+              </div>            
+            </div>
+            <button class="profile__add-button">
+              <img class="profile__add-img" src="./images/button-add.svg" alt="Кнопка_добавления">
+            </button>
+          </section> 
+
+          <section class="elements">
+            <div class="element">
+              <img class="element__img" src="./images/Карачаевск.jpg" alt="Карачаевск">
+              <div class="element__group">
+                <h2 class="element__title">Карачаевск</h2>
+                <div class="element__like"></div>
+              </div>
+            </div>
+            <div class="element">
+              <img class="element__img" src="./images/Эльбрус.jpg" alt="Эльбрус">
+              <div class="element__group">
+                <h2 class="element__title">Гора Эльбрус</h2>
+                <div class="element__like"></div>
+              </div>
+            </div>
+            <div class="element">
+              <img class="element__img" src="./images/Домбай.jpg" alt="Домбай">
+              <div class="element__group">
+                <h2 class="element__title">Домбай</h2>
+                <div class="element__like"></div>
+              </div>
+            </div>
+            <div class="element">
+              <img class="element__img" src="./images/Эльбрус.jpg" alt="Эльбрус">
+              <div class="element__group">
+                <h2 class="element__title">Гора Эльбрус</h2>
+                <div class="element__like"></div>
+              </div>
+            </div>
+            <div class="element">
+              <img class="element__img" src="./images/Домбай.jpg" alt="Домбай">
+              <div class="element__group">
+                <h2 class="element__title">Домбай</h2>
+                <div class="element__like"></div>
+              </div>
+            </div>
+            <div class="element">
+              <img class="element__img" src="./images/Карачаевск.jpg" alt="Карачаевск">
+              <div class="element__group">
+                <h2 class="element__title">Карачаево-Черкесия</h2>
+                <div class="element__like"></div>
+              </div>
+            </div>
+          </section>
+        </main>
+
+        <footer class="footer">
+          <p class="footer__logo">© 2020 Mesto Russia</p>
+        </footer>
+    </div>
+    <!--<div class="modal">
+      <div class="modal__container">
+        <button class="modal__close-button">
+          <img class="modal__close" src="./images/Close-button.svg" alt="Кнопка_выхода">
+        </button>
+        <h2 class="modal__title">Редактировать профиль</h2>
+        <form action="#" name="name" class="modal__field">
+          <p class="modal__name">Жак-Ив Кусто</p>
+          <div class="modal__line"></div>
+        </form>
+        <form action="#" name="about-me" class="modal__field">
+          <p class="modal__about-me">Исследователь океана</p>
+          <div class="modal__line"></div>
+        </form>
+        <button class="modal__button-save"><p class="modal__button-text">Сохранить</p></button>
+      </div>
+    </div>-->
+
+    <div class="modal">
+      <div class="modal__container">
+        <button class="modal__close-button">
+          <img class="modal__close" src="./images/Close-button.svg" alt="Кнопка_выхода">
+        </button>
+        <h2 class="modal__title">Редактировать профиль</h2>
+        <form action="#" name="name" class="modal__field">
+          <input type="text" class="" value="Жак-Ив Кусто">
+          <input type="text" class="" value="Исследователь океана">
+          <button type="submit" class="modal__button-save"><p class="modal__button-text">Сохранить</p></button>
+        </form>
+      </div>
+    </div>
+    <script src="index.js"></script>
+</body>
+</html>

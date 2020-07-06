@@ -1,0 +1,408 @@
+@import url(../vendor/normalize.css);
+@import url(../vendor/fonts/fonts.css);
+
+.page {
+    background-color: #000000;
+}
+
+.page__container {
+    min-width: 320px;
+    max-width: 1280px;
+    margin: 0 auto;
+    font-family: 'Inter', 'Helvetica Neue', Arial, sans-serif;    
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+    -webkit-text-size-adjust: 100%;
+    -ms-text-size-adjust: 100%;
+    -moz-text-size-adjust: 100%;
+}
+
+.header {
+    max-width: 882px;
+    margin: 45px auto 0;
+}
+
+.header__logo {
+    background-image: url(../images/header-logo.svg);
+    width: 142px;
+    height: 33px;
+    background-size: cover;
+
+}
+
+.header__line {
+    margin: 40px 0 0;
+    opacity: 0.7;
+    border: 1px solid #545454;
+}
+
+@media screen and (max-width: 320px) {
+    .header {
+        max-width: 882px;
+        margin: 28px auto 0;
+    }
+    
+    .header__logo {
+        width: 103px;
+        height: 24px;
+        margin: 28px 0 0 27px;
+    }
+
+    .header__line {
+        margin: 31px 0 0;
+    }
+}
+
+
+
+/*Блок profile*/
+.profile {
+    display: flex;
+    justify-content: space-between;
+    max-width: 882px;
+    margin: 40px auto 0;
+}
+
+.profile__container {
+    display: flex;
+}
+
+.profile__avatar {
+    border-radius: 50%;
+    width: 168px;
+}
+
+.profile__info {
+    display: flex;
+    flex-direction: column;
+    margin-top: 18px;
+    width: 295px;
+    margin-left: 30px;
+}
+
+.profile__info-button {
+    display: flex;
+    width: 336px;
+}
+
+.profile__title {
+    max-width: 295px;
+    margin: 0;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+    overflow: hidden;
+    font-family: Inter;
+    font-style: normal;
+    font-weight: 500;
+    font-size: 42px;
+    line-height: 56px;
+    color: #FFFFFF;
+}
+
+.profile__edit-button {
+    border: 1px solid #FFFFFF;
+    box-sizing: border-box;
+    background-color: #000000;
+    width: 24px;
+    height: 24px;
+    padding: 0;
+    margin-top: 19px;
+    margin-left: 17px;
+}
+
+.profile__edit-img{
+    width: 10px;
+    height: 10px;
+    margin: 7px auto;
+}
+
+.profile__subtitle {
+    max-width: 318px;
+    margin-top: 16px;
+    margin-bottom: 0;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+    overflow: hidden;
+    font-family: Inter;
+    font-style: normal;
+    font-weight: normal;
+    font-size: 18px;
+    line-height: 22px; 
+    color: #FFFFFF;
+}
+
+.profile__add-button {
+    border: 2px solid #FFFFFF;
+    box-sizing: border-box;
+    background-color: #000000;
+    border-radius: 2px;
+    width: 150px;
+    height: 50px;
+    padding: 0;
+    margin-top: 35px;
+}
+
+.profile__add-img {
+    width: 22px;
+    height: 22px;
+    margin: 14px auto;
+}
+
+@media screen and (max-width: 320px) {
+    .profile {
+        flex-direction: column;
+        max-width: 882px;
+        margin: 42px auto 0;
+    }
+    
+    .profile__container {
+        flex-direction: column;
+        align-items: center;
+    }
+    
+    .profile__avatar {
+        width: 168px;
+    }
+    
+    .profile__info {
+        align-items: center;
+        width: 280px;
+        margin: 10px auto 0;
+    }
+    
+    .profile__info-button {
+        width: 219px;
+        justify-content: space-between;
+    }
+
+    .profile__title {
+        font-size: 27px;
+        text-align: center;
+    }
+    
+    .profile__edit-button {
+        width: 18px;
+        height: 18px;
+        margin-top: 20px;
+        margin-left: 0;
+    }
+    
+    .profile__edit-img{
+        width: 7px;
+        height: 7px;
+        margin: 5px auto;
+    }
+    
+    .profile__subtitle {
+        margin-top: 14px;
+        font-size: 14px;
+        line-height: 17px;
+        text-align: center;
+    }
+    
+    .profile__add-button {
+        width: 282px;
+        margin: 36px auto 0;
+    }
+    
+    .profile__add-img {
+        width: 16px;
+        height: 16px;
+    }
+}
+
+
+
+/*блок elements*/
+.elements {
+    max-width: 882px;
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+    grid-template-rows: repeat(2, 1fr);
+    grid-gap: 18px 21px;
+    margin: 51px auto 0;
+}
+
+.element {
+    display: flex;
+    flex-direction: column;
+    justify-self: center;
+    max-width: 282px;
+    background: #FFFFFF;
+    border-radius: 10px;
+}
+
+.element__img {
+    object-fit: cover;
+    justify-self: center;
+    max-width: 282px;
+    height: 282px;
+}
+
+.element__group {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    width: 246px;
+    margin: 25px auto 0;
+}
+
+.element__title {
+    text-overflow: ellipsis;
+    white-space: nowrap;
+    overflow: hidden;
+    font-family: Inter;
+    font-style: normal;
+    font-weight: 900;
+    font-size: 24px;
+    line-height: 29px;
+    color: #000000;
+}
+
+.element__like {
+    background-image: url(../images/like.svg);
+    background-size: cover;
+    margin: 6px 7px 0 0;
+    min-width: 20px;
+    height: 18px;
+}
+
+
+
+.footer {
+    max-width: 318px;
+    margin: 66px 0 60px 199px;
+}
+
+.footer__logo {
+    font-family: Inter;
+    font-style: normal;
+    font-weight: normal;
+    font-size: 18px;
+    line-height: 22px;
+    color: #545454;
+}
+
+
+@media screen and (max-width: 320px) {
+    .footer {
+        width: 282px;
+        margin: 48px auto 36px;
+    }
+    
+    .footer__logo {
+        font-size: 14px;
+        line-height: 17px;
+    }  
+}
+
+
+/* Блок modal*/
+
+.modal {
+    position: fixed;
+    top: 0;
+    left: 0;
+    background: #00000096;
+    height: 100%;
+    width: 100%;
+    display: none;
+    justify-content: center;
+    align-items: center;
+}
+
+.modal_open {
+    display: flex;
+}
+
+.modal__container {
+    display: flex;
+    flex-direction: column;
+    position: relative;
+    max-width: 430px;
+    background: #FFFFFF;
+    box-shadow: 0px 0px 25px rgba(0, 0, 0, 0.15);
+    border-radius: 10px;
+    padding: 34px 36px 36px;
+    box-sizing: border-box;
+}
+
+.modal__close-button {
+    position: absolute;
+    transform: rotate(45deg);
+    width: 40px;
+    height: 40px;
+    top: -40px;
+    right: -40px;
+    padding: 0;
+    background: transparent;
+    border: none;
+}
+
+.modal__close {
+    width: 40px;
+    height: 40px;
+    transform: rotate(45deg);
+    background-size: cover;
+}
+
+.modal__title {
+    margin: 0 0 54px;
+    font-family: Inter;
+    font-style: normal;
+    font-weight: 900;
+    font-size: 24px;
+    line-height: 29px;
+    color: #000000;    
+}
+
+.modal__field {
+    width: 358px;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+
+}
+
+.modal__name {
+    margin: 0;
+    font-family: Inter;
+    font-style: normal;
+    font-weight: normal;
+    font-size: 14px;
+    line-height: 17px;
+    color: #000000;
+}
+
+.modal__about-me {
+    margin: 29px 0 0;
+    font-family: Inter;
+    font-style: normal;
+    font-weight: normal;
+    font-size: 14px;
+    line-height: 17px;
+    color: #000000;
+}
+
+.modal__button-save {
+    margin-top: 48px;
+    padding: 0;
+    background: #000000;
+    border-radius: 2px;
+}
+
+.modal__line {
+    opacity: 0.2;
+    border: 1px solid #000000;
+    margin-top: 13px;
+}
+
+.modal__button-text {
+    font-family: Inter;
+    font-style: normal;
+    font-weight: normal;
+    font-size: 18px;
+    line-height: 22px;
+    text-align: center;
+    color: #FFFFFF;
+}
