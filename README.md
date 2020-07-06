@@ -9,5 +9,5 @@
 
 **GitHub**
 
-* [Ссылка на GitHub]( https://sektor90.github.io/mesto/index.html)
+* https://sektor90.github.io/mesto/index.html
 
