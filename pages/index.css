@@ -102,12 +102,17 @@
 .profile__edit-button {
     border: 1px solid #FFFFFF;
     box-sizing: border-box;
+    border: none;
     background-color: #000000;
     width: 24px;
     height: 24px;
     padding: 0;
     margin-top: 19px;
     margin-left: 17px;
+}
+
+.profile__edit-button:hover {
+    opacity: 0.6;
 }
 
 .profile__edit-img{
@@ -142,13 +147,17 @@
     margin-top: 35px;
 }
 
+.profile__add-button:hover {
+    opacity: 0.6;
+}
+
 .profile__add-img {
     width: 22px;
     height: 22px;
     margin: 14px auto;
 }
 
-@media screen and (max-width: 320px) {
+@media screen and (max-width: 680px) {
     .profile {
         flex-direction: column;
         max-width: 882px;
@@ -284,7 +293,7 @@
 }
 
 
-@media screen and (max-width: 320px) {
+@media screen and (max-width: 680px) {
     .footer {
         width: 282px;
         margin: 48px auto 36px;
@@ -346,6 +355,10 @@
     background-size: cover;
 }
 
+.modal__close:hover {
+    opacity: 0.6;
+}
+
 .modal__title {
     margin: 0 0 54px;
     font-family: Inter;
@@ -364,8 +377,8 @@
 
 }
 
-.modal__name {
-    margin: 0;
+.form__input {
+    border: none;
     font-family: Inter;
     font-style: normal;
     font-weight: normal;
@@ -374,30 +387,19 @@
     color: #000000;
 }
 
-.modal__about-me {
+.form__input_name {
+    margin: 0;
+}
+
+.form__input_about-me {
     margin: 29px 0 0;
-    font-family: Inter;
-    font-style: normal;
-    font-weight: normal;
-    font-size: 14px;
-    line-height: 17px;
-    color: #000000;
 }
 
 .modal__button-save {
     margin-top: 48px;
-    padding: 0;
+    padding: 13px 0 18px;
     background: #000000;
     border-radius: 2px;
-}
-
-.modal__line {
-    opacity: 0.2;
-    border: 1px solid #000000;
-    margin-top: 13px;
-}
-
-.modal__button-text {
     font-family: Inter;
     font-style: normal;
     font-weight: normal;
@@ -405,4 +407,14 @@
     line-height: 22px;
     text-align: center;
     color: #FFFFFF;
+}
+
+.modal__button-save:hover {
+    background: rgba(0, 0, 0, 0.8);
+}
+
+.modal__line {
+    opacity: 0.2;
+    border: 1px solid #000000;
+    margin-top: 13px;
 }
