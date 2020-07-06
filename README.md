@@ -9,5 +9,5 @@
 
 **GitHub**
 
-* [Ссылка на GitHub](https://www.figma.com/file/StZjf8HnoeLdiXS7dYrLAh/JavaScript.-Sprint-4)
+* [Ссылка на GitHub]( https://sektor90.github.io/mesto/index.html)
 
