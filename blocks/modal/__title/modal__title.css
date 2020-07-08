@@ -1,0 +1,16 @@
+.modal__title {
+    margin: 0 0 54px;
+    font-family: 'Inter', ‘Arial’, sans-serif;
+    font-style: normal;
+    font-weight: 900;
+    font-size: 24px;
+    line-height: 29px;
+    color: #000000;    
+}
+
+@media screen and (max-width: 680px) {
+    .modal__title {
+        font-size: 22px;
+        text-align: center;
+    }
+}
