@@ -3,9 +3,12 @@ const openModalCard = document.querySelector('.profile__add-button'); //Кноп
 
 const addCard = document.querySelector('.modal_add-card');              // Модалка с добавлениями карточек
 const editProfile = document.querySelector('.modal_edit-profile');      //Модалка редактирования профиля
+const imageCard = document.querySelector('.modal_image-card');      //Модалка просмотра картинки
+
 
 const addCardCloseModalButton = addCard.querySelector('.modal__close-button'); //Кнопак закрытия модалки с добавлениями карточек
 const editProfileCloseModalButton = editProfile.querySelector('.modal__close-button'); //Кнопак закрытия модалки редактирования профиля
+const closeModalButtonImage = imageCard.querySelector('.modal__close-button'); //Кнопак закрытия модалки просмотра карточки
 
 const form = editProfile.querySelector('.modal__field'); //Поля формы редактирования профиля
 const addForm = addCard.querySelector('.modal__field'); //Поля формы с добавлениями карточек
@@ -14,6 +17,8 @@ let inputName = form.querySelector('.modal__input_name'); //Поле редак�
 let inputAboutMe = form.querySelector('.modal__input_about-me'); //Поле редактирования Обо мне
 let inputPlase = addForm.querySelector('.modal__input_plase'); //Поле редактирования Названия места  
 let inputLinc = addForm.querySelector('.modal__input_link'); //Поле редактирования Ссылки на картинку
+let modalImageOpen = imageCard.querySelector('.modal__image-open'); //Картинка увеличенная
+let modalTitltOpen = imageCard.querySelector('.modal__title-open'); //Текст для увеличенной картинки
 
 let profileTitle = document.querySelector('.profile__title'); // Поле "Имя"
 let profileSubtitle = document.querySelector('.profile__subtitle'); //Поле "Обо мне"
@@ -75,24 +80,39 @@ function addCardSubmitHandler (evt) {
     toggleModal(addCard);
 }
 
+
+function hendleLikeClic (evt) {
+    evt.target.classList.toggle('element__like_active');
+}
+
+function hendleDeleteClic (evt) {
+    evt.target.closest('.element').remove; //Доделать удаление карточки
+}
+
+function hendleImageClic (data) {  //Заполнение окна увеличения картинки
+    modalTitltOpen.textContent = data.name;
+    modalImageOpen. src = data.link;
+    modalImageOpen. alt = data.name;
+}
+
 function createCards(data) {
     const cardElement = element.cloneNode(true);
 
     const elementImage = cardElement.querySelector('.element__img');
     const elementTitle = cardElement.querySelector('.element__title');
-    const elementLike = cardElement.querySelector('.element__title');
+    const elementLike = cardElement.querySelector('.element__like');
     const elementDelete = cardElement.querySelector('.element__delete');
     
-   elementLike.addEventListener ('click', () =>{
-    //hendleLikeClic
+   elementLike.addEventListener ('click', hendleLikeClic);
+
+   elementDelete.addEventListener ('click', (evt) =>{
+    //hendleDeleteClic
+
    })
 
-   elementDelete.addEventListener ('click', () =>{
-    //hendleDeleteClic
-    })
-
     elementImage.addEventListener ('click', () =>{
-    //hendleImageClic
+    toggleModal(imageCard);
+    hendleImageClic (data);
     })
 
    elementTitle.textContent = data.name;
@@ -128,6 +148,10 @@ openModalCard.addEventListener('click', () =>{
 addCardCloseModalButton.addEventListener('click', () =>{
     toggleModal(addCard);
 })
+
+closeModalButtonImage.addEventListener('click', () =>{
+    toggleModal(imageCard);
+});
 
 form.addEventListener('submit', formSubmitHandler);
 addForm.addEventListener('submit', addCardSubmitHandler);

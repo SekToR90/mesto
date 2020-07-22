@@ -8,3 +8,4 @@
 @import url(../blocks/footer/footer.css);
 @import url(../blocks/modal/modal.css);
 @import url(../blocks/modal/_open/modal_open.css);
+@import url(../blocks/element/__like/_active/element__like_active.css)

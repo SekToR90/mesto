@@ -5,6 +5,9 @@
 @import url(./__field/modal__field.css);
 @import url(./__button-save/modal__button-save.css);
 @import url(./__input/modal__input.css);
+@import url(./__image-open/modal__image-open.css);
+@import url(./__container-image/modal__container-image.css);
+@import url(./__title-open/modal__title-open.css);
 
 .modal {
     position: fixed;
