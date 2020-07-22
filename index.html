@@ -31,48 +31,6 @@
           </section> 
 
           <section class="elements">
-            <div class="element">
-              <img class="element__img" src="./images/karachaevsk.jpg" alt="Карачаевск">
-              <div class="element__group">
-                <h2 class="element__title">Карачаевск</h2>
-                <button type="button" class="element__like"></button>
-              </div>
-            </div>
-            <div class="element">
-              <img class="element__img" src="./images/elbrus.jpg" alt="Эльбрус">
-              <div class="element__group">
-                <h2 class="element__title">Гора Эльбрус</h2>
-                <button type="button" class="element__like"></button>
-              </div>
-            </div>
-            <div class="element">
-              <img class="element__img" src="./images/dombai.jpg" alt="Домбай">
-              <div class="element__group">
-                <h2 class="element__title">Домбай</h2>
-                <button type="button" class="element__like"></button>
-              </div>
-            </div>
-            <div class="element">
-              <img class="element__img" src="./images/elbrus.jpg" alt="Эльбрус">
-              <div class="element__group">
-                <h2 class="element__title">Гора Эльбрус</h2>
-                <button type="button" class="element__like"></button>
-              </div>
-            </div>
-            <div class="element">
-              <img class="element__img" src="./images/dombai.jpg" alt="Домбай">
-              <div class="element__group">
-                <h2 class="element__title">Домбай</h2>
-                <button type="button" class="element__like"></button>
-              </div>
-            </div>
-            <div class="element">
-              <img class="element__img" src="./images/karachaevsk.jpg" alt="Карачаевск">
-              <div class="element__group">
-                <h2 class="element__title">Карачаево-Черкесия</h2>
-                <button type="button" class="element__like"></button>
-              </div>
-            </div>
           </section>
         </main>
 
@@ -80,7 +38,7 @@
           <p class="footer__logo">© 2020 Mesto Russia</p>
         </footer>
     </div>
-    <div class="modal">
+    <div class="modal modal_edit-profile">
       <div class="modal__container">
         <button type="button" class="modal__close-button">
           <img class="modal__close" src="./images/close-icon.svg" alt="Кнопка_выхода">
@@ -93,6 +51,31 @@
         </form>
       </div>
     </div>
+
+    <div class="modal modal_add-card">
+      <div class="modal__container">
+        <button type="button" class="modal__close-button">
+          <img class="modal__close" src="./images/close-icon.svg" alt="Кнопка_выхода">
+        </button>
+        <h2 class="modal__title">Новое место</h2>
+        <form action="#" name="form" class="modal__field">
+          <input type="text" name="name" class="modal__input modal__input_plase" placeholder="Название">
+          <input type="text" name="about-me" class="modal__input modal__input_link" placeholder="Ссылка на картинку">
+          <button type="submit" class="modal__button-save">Сохранить</button>
+        </form>
+      </div>
+    </div>
+
+    <template class="elements-card">
+      <div class="element">
+        <button type="button" class="element__delete"></button>
+        <img class="element__img" src="" alt="Карачаевск">
+        <div class="element__group">
+          <h2 class="element__title"></h2>
+          <button type="button" class="element__like"></button>
+        </div>
+      </div>
+    </template>
     <script src="./scripts/index.js"></script>
 </body>
 </html>
