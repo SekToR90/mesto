@@ -85,10 +85,6 @@ function hendleLikeClic (evt) {
     evt.target.classList.toggle('element__like_active');
 }
 
-function hendleDeleteClic (evt) {
-    evt.target.closest('.element').remove; //Доделать удаление карточки
-}
-
 function hendleImageClic (data) {  //Заполнение окна увеличения картинки
     modalTitltOpen.textContent = data.name;
     modalImageOpen. src = data.link;
@@ -105,9 +101,10 @@ function createCards(data) {
     
    elementLike.addEventListener ('click', hendleLikeClic);
 
-   elementDelete.addEventListener ('click', (evt) =>{
-    //hendleDeleteClic
-
+   elementDelete.addEventListener ('click', (evt) =>{  //Удаление эл-та Grid контейнера
+    evt.target;
+    const deleteElement = elementDelete.closest('.element');
+    deleteElement.remove();
    })
 
     elementImage.addEventListener ('click', () =>{
