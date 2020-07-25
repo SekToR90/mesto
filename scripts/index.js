@@ -13,15 +13,15 @@ const closeModalButtonImage = imageCard.querySelector('.modal__close-button'); /
 const form = editProfile.querySelector('.modal__field'); //Поля формы редактирования профиля
 const addForm = addCard.querySelector('.modal__field'); //Поля формы с добавлениями карточек
 
-let inputName = form.querySelector('.modal__input_name'); //Поле редактирования Имени  
-let inputAboutMe = form.querySelector('.modal__input_about-me'); //Поле редактирования Обо мне
-let inputPlase = addForm.querySelector('.modal__input_plase'); //Поле редактирования Названия места  
-let inputLinc = addForm.querySelector('.modal__input_link'); //Поле редактирования Ссылки на картинку
-let modalImageOpen = imageCard.querySelector('.modal__image-open'); //Картинка увеличенная
-let modalTitltOpen = imageCard.querySelector('.modal__title-open'); //Текст для увеличенной картинки
+const inputName = form.querySelector('.modal__input_name'); //Поле редактирования Имени  
+const inputAboutMe = form.querySelector('.modal__input_about-me'); //Поле редактирования Обо мне
+const inputPlase = addForm.querySelector('.modal__input_plase'); //Поле редактирования Названия места  
+const inputLinc = addForm.querySelector('.modal__input_link'); //Поле редактирования Ссылки на картинку
+const modalImageOpen = imageCard.querySelector('.modal__image-open'); //Картинка увеличенная
+const modalTitltOpen = imageCard.querySelector('.modal__title-open'); //Текст для увеличенной картинки
 
-let profileTitle = document.querySelector('.profile__title'); // Поле "Имя"
-let profileSubtitle = document.querySelector('.profile__subtitle'); //Поле "Обо мне"
+const profileTitle = document.querySelector('.profile__title'); // Поле "Имя"
+const profileSubtitle = document.querySelector('.profile__subtitle'); //Поле "Обо мне"
 
 const element = document.querySelector('.elements-card').content.querySelector('.element'); //Находим Карточку внутри контейнера template
 const elements = document.querySelector('.elements'); //Находим секцию с элементами в которой находятся все карточки
@@ -58,11 +58,21 @@ const initialCards = [
 function toggleModal(modal) {
     modal.classList.toggle('modal_open');
 
+}
+
+function toggleProfileModal(modal) {
+    toggleModal(modal);
+
     if(modal.classList.contains('modal_open')) {
         inputName.value =  profileTitle.textContent;
         inputAboutMe.value = profileSubtitle.textContent;
     }
 }
+
+function resetInputValue(data) {
+    data.querySelector('form').reset()
+  }
+  
 
 function formSubmitHandler (evt) {
     evt.preventDefault();
@@ -81,17 +91,17 @@ function addCardSubmitHandler (evt) {
 }
 
 
-function hendleLikeClic (evt) {
+function hendleLikeClick (evt) {
     evt.target.classList.toggle('element__like_active');
 }
 
-function hendleImageClic (data) {  //Заполнение окна увеличения картинки
+function hendleImageClick (data) {  //Заполнение окна увеличения картинки
     modalTitltOpen.textContent = data.name;
     modalImageOpen. src = data.link;
     modalImageOpen. alt = data.name;
 }
 
-function createCards(data) {
+function createCard(data) {
     const cardElement = element.cloneNode(true);
 
     const elementImage = cardElement.querySelector('.element__img');
@@ -99,7 +109,7 @@ function createCards(data) {
     const elementLike = cardElement.querySelector('.element__like');
     const elementDelete = cardElement.querySelector('.element__delete');
     
-   elementLike.addEventListener ('click', hendleLikeClic);
+   elementLike.addEventListener ('click', hendleLikeClick);
 
    elementDelete.addEventListener ('click', (evt) =>{  //Удаление эл-та Grid контейнера
     evt.target;
@@ -109,7 +119,7 @@ function createCards(data) {
 
     elementImage.addEventListener ('click', () =>{
     toggleModal(imageCard);
-    hendleImageClic (data);
+    hendleImageClick (data);
     })
 
    elementTitle.textContent = data.name;
@@ -121,7 +131,7 @@ function createCards(data) {
 
 function renderCards(data) {
   
-    elements.prepend(createCards(data));
+    elements.prepend(createCard(data));
  }
 
 
@@ -133,14 +143,15 @@ function renderCards(data) {
 
 
 openModalButton.addEventListener('click', () =>{
-    toggleModal(editProfile);
+    toggleProfileModal(editProfile);
 });
 editProfileCloseModalButton.addEventListener('click', () =>{
-    toggleModal(editProfile);
+    toggleProfileModal(editProfile);
 });
 
 openModalCard.addEventListener('click', () =>{
     toggleModal(addCard);
+    resetInputValue(addCard);
 });
 addCardCloseModalButton.addEventListener('click', () =>{
     toggleModal(addCard);
