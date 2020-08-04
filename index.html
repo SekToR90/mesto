@@ -38,16 +38,22 @@
           <p class="footer__logo">© 2020 Mesto Russia</p>
         </footer>
     </div>
+    
     <div class="modal modal_edit-profile">
       <div class="modal__container">
         <button type="button" class="modal__close-button">
           <img class="modal__close" src="./images/close-icon.svg" alt="Кнопка_выхода">
         </button>
         <h2 class="modal__title">Редактировать профиль</h2>
-        <form action="#" name="form" class="modal__field">
-          <input type="text" name="name" class="modal__input modal__input_name" value="Жак-Ив Кусто">
-          <input type="text" name="about-me" class="modal__input modal__input_about-me" value="Исследователь океана">
-          <button type="submit" class="modal__button-save">Сохранить</button>
+        <form action="#" name="form" class="modal__field" novalidate>
+
+          <input type="text" name="name" class="modal__input modal__input_name" value="Жак-Ив Кусто" placeholder="Имя" required minlength="2" maxlength="40" autocomplete="off">
+          <span class="modal__error" id="name-error"></span>
+
+          <input type="text" name="aboutMe" class="modal__input modal__input_about-me" value="Исследователь океана" placeholder="О себе" required minlength="2" maxlength="200" autocomplete="off">
+          <span class="modal__error" id="aboutMe-error"></span>
+
+          <button type="submit" class="modal__button-save modal__button-save_disabled" disabled>Сохранить</button>
         </form>
       </div>
     </div>
@@ -58,9 +64,14 @@
           <img class="modal__close" src="./images/close-icon.svg" alt="Кнопка_выхода">
         </button>
         <h2 class="modal__title">Новое место</h2>
-        <form action="#" name="form" class="modal__field">
-          <input type="text" name="name" class="modal__input modal__input_plase" placeholder="Название">
-          <input type="text" name="about-me" class="modal__input modal__input_link" placeholder="Ссылка на картинку">
+        <form action="#" name="form" class="modal__field" novalidate>
+
+          <input type="text" name="plase" class="modal__input modal__input_plase" placeholder="Название" required minlength="1" maxlength="30" autocomplete="off">
+          <span class="modal__error" id="plase-error"></span>
+
+          <input type="url" name="url" class="modal__input modal__input_link" placeholder="Ссылка на картинку" required autocomplete="off">
+          <span class="modal__error" id="url-error"></span>
+
           <button type="submit" class="modal__button-save">Сохранить</button>
         </form>
       </div>
@@ -87,5 +98,6 @@
       </div>
     </template>
     <script src="./scripts/index.js"></script>
+    <script src="./scripts/validate.js"></script>
 </body>
 </html>
