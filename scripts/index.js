@@ -1,3 +1,5 @@
+const modalList = Array.from(document.querySelectorAll('.modal')); //Поиск всех модалок
+
 const openModalButton = document.querySelector('.profile__edit-button'); //Кнопка редактирования профиля
 const openModalCard = document.querySelector('.profile__add-button'); //Кнопка для добавления карточек 
 
@@ -53,7 +55,9 @@ const initialCards = [
     }
 ];
 
-
+function removeModal(modal) {
+    modal.classList.remove('modal_open');
+}
 
 function toggleModal(modal) {
     modal.classList.toggle('modal_open');
@@ -69,7 +73,7 @@ function toggleProfileModal(modal) {
     }
 }
 
-function resetInputValue(data) {
+function resetInputValue(data) { //Функция очистки содержимого форм
     data.querySelector('form').reset()
   }
   
@@ -141,12 +145,30 @@ function renderCards(data) {
 
 })
 
+function closeClickModal(event, modal) {
+    if (event.target.classList.contains('modal')) {
+      toggleModal(modal);
+    }
+  } 
 
+  modalList.forEach((modalElement) => {
+    modalElement.addEventListener('mousedown', () => {
+        closeClickModal(event, modalElement);
+    });
+  });
+
+
+  
 openModalButton.addEventListener('click', () =>{
     toggleProfileModal(editProfile);
 });
 editProfileCloseModalButton.addEventListener('click', () =>{
     toggleProfileModal(editProfile);
+});
+document.addEventListener('keydown', (evt) => {
+    if(evt.key === "Escape") {
+        removeModal(editProfile);
+    };
 });
 
 openModalCard.addEventListener('click', () =>{
@@ -156,10 +178,23 @@ openModalCard.addEventListener('click', () =>{
 addCardCloseModalButton.addEventListener('click', () =>{
     toggleModal(addCard);
 })
+document.addEventListener('keydown', (evt) => {
+    if(evt.key === "Escape") {
+        removeModal(addCard);
+    };
+});
+
 
 closeModalButtonImage.addEventListener('click', () =>{
     toggleModal(imageCard);
 });
+document.addEventListener('keydown', (evt) => {
+    if(evt.key === "Escape") {
+        removeModal(imageCard);
+    };
+});
+
 
 form.addEventListener('submit', formSubmitHandler);
 addForm.addEventListener('submit', addCardSubmitHandler);
+   

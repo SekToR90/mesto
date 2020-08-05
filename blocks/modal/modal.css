@@ -8,6 +8,7 @@
 @import url(./__image-open/modal__image-open.css);
 @import url(./__container-image/modal__container-image.css);
 @import url(./__title-open/modal__title-open.css);
+@import url(./__error/modal__error.css);
 
 .modal {
     position: fixed;
