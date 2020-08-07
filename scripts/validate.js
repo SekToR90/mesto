@@ -50,7 +50,7 @@ function setEventListener(formElement, settings) {
             setEventListener(formElement, settings);
 
             formElement.addEventListener('reset', function(){
-              addButtonDisabled(formElement, settings)
+              addButtonDisabled(formElement, settings);
             }); 
         });
   };

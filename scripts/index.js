@@ -60,16 +60,9 @@ const initialCards = [
 function closeModalEscape (evt) {
     const modal = document.querySelector('.modal_open');
     if (evt.key === "Escape") {
-        console.log("HELLO") 
         toggleModal(modal);
     };
 }
-
-
-
-
-
-
 
 function toggleModal(modal) {
     modal.classList.toggle('modal_open');
@@ -79,7 +72,6 @@ function toggleModal(modal) {
         document.removeEventListener('keydown', closeModalEscape);
       }
 }
-
 
 
 function toggleProfileModal(modal) {
@@ -162,11 +154,9 @@ function renderCards(data) {
 
 })
 
-
-
-function closeClickModal(event, modal) {
-    if (event.target.classList.contains('modal')) {
-      toggleModal(modal);
+function closeClickModal(evt, modal) {
+    if (evt.target.classList.contains('modal')) {
+        modal.classList.remove('modal_open');
     }
   } 
 
@@ -195,21 +185,11 @@ addCardCloseModalButton.addEventListener('click', () =>{
 })
 
 
-
 closeModalButtonImage.addEventListener('click', () =>{
     toggleModal(imageCard);
-    removeModal(imageCard);
 });
 
 
 
 form.addEventListener('submit', formSubmitHandler);
 addForm.addEventListener('submit', addCardSubmitHandler);
-   
-
-
-     
-
-    
-
-       
