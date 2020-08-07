@@ -55,14 +55,32 @@ const initialCards = [
     }
 ];
 
-function removeModal(modal) {
-    modal.classList.remove('modal_open');
+
+
+function closeModalEscape (evt) {
+    const modal = document.querySelector('.modal_open');
+    if (evt.key === "Escape") {
+        console.log("HELLO") 
+        toggleModal(modal);
+    };
 }
+
+
+
+
+
+
 
 function toggleModal(modal) {
     modal.classList.toggle('modal_open');
-
+    if ( modal.classList.contains('modal_open')) {
+        document.addEventListener('keydown', closeModalEscape);
+      } else {
+        document.removeEventListener('keydown', closeModalEscape);
+      }
 }
+
+
 
 function toggleProfileModal(modal) {
     toggleModal(modal);
@@ -90,7 +108,6 @@ function addCardSubmitHandler (evt) {
     evt.preventDefault();
 
     renderCards ({name: inputPlase.value, link: inputLinc.value})
-    
     toggleModal(addCard);
 }
 
@@ -145,6 +162,8 @@ function renderCards(data) {
 
 })
 
+
+
 function closeClickModal(event, modal) {
     if (event.target.classList.contains('modal')) {
       toggleModal(modal);
@@ -152,8 +171,8 @@ function closeClickModal(event, modal) {
   } 
 
   modalList.forEach((modalElement) => {
-    modalElement.addEventListener('mousedown', () => {
-        closeClickModal(event, modalElement);
+    modalElement.addEventListener('mousedown', (evt) => {
+        closeClickModal(evt, modalElement);
     });
   });
 
@@ -165,36 +184,32 @@ openModalButton.addEventListener('click', () =>{
 editProfileCloseModalButton.addEventListener('click', () =>{
     toggleProfileModal(editProfile);
 });
-document.addEventListener('keydown', (evt) => {
-    if(evt.key === "Escape") {
-        removeModal(editProfile);
-    };
-});
+
 
 openModalCard.addEventListener('click', () =>{
     toggleModal(addCard);
-    resetInputValue(addCard);
+    resetInputValue(addCard); 
 });
 addCardCloseModalButton.addEventListener('click', () =>{
     toggleModal(addCard);
 })
-document.addEventListener('keydown', (evt) => {
-    if(evt.key === "Escape") {
-        removeModal(addCard);
-    };
-});
+
 
 
 closeModalButtonImage.addEventListener('click', () =>{
     toggleModal(imageCard);
+    removeModal(imageCard);
 });
-document.addEventListener('keydown', (evt) => {
-    if(evt.key === "Escape") {
-        removeModal(imageCard);
-    };
-});
+
 
 
 form.addEventListener('submit', formSubmitHandler);
 addForm.addEventListener('submit', addCardSubmitHandler);
    
+
+
+     
+
+    
+
+       

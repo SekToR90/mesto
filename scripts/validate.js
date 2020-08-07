@@ -31,13 +31,12 @@ enableValidation({
  
 function setEventListener(formElement, settings) {
     const inputList = Array.from(formElement.querySelectorAll(settings.inputSelector));
-    const buttonElement = formElement.querySelector(settings.submitButtonSelector);
 
-    toggleButtonState(inputList, buttonElement, settings.inactiveButtonClass)
+    toggleButtonState(inputList, settings, formElement);
     inputList.forEach((inputElement) => { 
         inputElement.addEventListener('input', () => {
             isValid(formElement, inputElement, settings);
-            toggleButtonState(inputList, buttonElement, settings.inactiveButtonClass)
+            toggleButtonState(inputList, settings, formElement);
         }); 
     });
 };
@@ -49,6 +48,10 @@ function setEventListener(formElement, settings) {
                 evt.preventDefault();
             });
             setEventListener(formElement, settings);
+
+            formElement.addEventListener('reset', function(){
+              addButtonDisabled(formElement, settings)
+            }); 
         });
   };
 
@@ -61,12 +64,23 @@ function setEventListener(formElement, settings) {
   };
   
 
-  function toggleButtonState(inputList, buttonElement, inactiveButtonClass) {
+  function toggleButtonState(inputList, settings, formElement) {
     if (hasInvalidInput(inputList)) {
-        buttonElement.classList.add(inactiveButtonClass);
-        buttonElement.disabled = true;
+      addButtonDisabled(formElement, settings)
     } else {
-        buttonElement.classList.remove(inactiveButtonClass);
-        buttonElement.disabled = false;
+      removeButtonDisabled(formElement, settings)
     }
+  };
+
+
+  function addButtonDisabled(formElement, settings) {
+    const buttonElement = formElement.querySelector(settings.submitButtonSelector);
+        buttonElement.classList.add(settings.inactiveButtonClass);
+        buttonElement.disabled = true;
+  };
+
+  function removeButtonDisabled(formElement, settings) {
+    const buttonElement = formElement.querySelector(settings.submitButtonSelector);
+    buttonElement.classList.remove(settings.inactiveButtonClass);
+    buttonElement.disabled = false;
   };
