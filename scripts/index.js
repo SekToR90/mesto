@@ -1,5 +1,6 @@
 import FormValidator from './FormValidator.js';
 import Card from './Card.js';
+import {imageCard, closeModalEscape, toggleModal} from './utils.js';
 
 const modalList = Array.from(document.querySelectorAll('.modal')); //Поиск всех модалок
 
@@ -8,7 +9,7 @@ const openModalCard = document.querySelector('.profile__add-button'); //Кноп
 
 const addCard = document.querySelector('.modal_add-card');              // Модалка с добавлениями карточек
 const editProfile = document.querySelector('.modal_edit-profile');      //Модалка редактирования профиля
-const imageCard = document.querySelector('.modal_image-card');      //Модалка просмотра картинки
+
 
 
 const addCardCloseModalButton = addCard.querySelector('.modal__close-button'); //Кнопак закрытия модалки с добавлениями карточек
@@ -22,13 +23,11 @@ const inputName = form.querySelector('.modal__input_name'); //Поле реда�
 const inputAboutMe = form.querySelector('.modal__input_about-me'); //Поле редактирования Обо мне
 const inputPlase = addForm.querySelector('.modal__input_plase'); //Поле редактирования Названия места  
 const inputLinc = addForm.querySelector('.modal__input_link'); //Поле редактирования Ссылки на картинку
-const modalImageOpen = imageCard.querySelector('.modal__image-open'); //Картинка увеличенная
-const modalTitltOpen = imageCard.querySelector('.modal__title-open'); //Текст для увеличенной картинки
+
 
 const profileTitle = document.querySelector('.profile__title'); // Поле "Имя"
 const profileSubtitle = document.querySelector('.profile__subtitle'); //Поле "Обо мне"
 
-const element = document.querySelector('.elements-card').content.querySelector('.element'); //Находим Карточку внутри контейнера template
 const elements = document.querySelector('.elements'); //Находим секцию с элементами в которой находятся все карточки
 
 
@@ -74,24 +73,6 @@ const initialCards = [
 ];
 
 
-//Функция закрытие модалок по кнопке Escape
-function closeModalEscape (evt) {  
-    const modal = document.querySelector('.modal_open');
-    if (evt.key === "Escape") {
-        toggleModal(modal);
-    };
-}
-
-//Функция открывает/закрывает модальное окно и проверяет  открыта ли модальное окно (если модалка открыта - добавляет слушатель на кнопук Escape, если нет - удаляет слушатель)
-function toggleModal(modal) {
-    modal.classList.toggle('modal_open');
-    if ( modal.classList.contains('modal_open')) {
-        document.addEventListener('keydown', closeModalEscape);
-      } else {
-        document.removeEventListener('keydown', closeModalEscape);
-      }
-}
-
 //Функция при открытии модального окна "Редактировать профиль" присваевает текущее значение "имя" и "обо мне"
 function toggleProfileModal(modal) {
     toggleModal(modal);
@@ -119,62 +100,16 @@ function formSubmitHandler (evt) {
 //Функция создает новую карточку 
 function addCardSubmitHandler (evt) {
     evt.preventDefault();
+    const card = new Card(inputPlase.value, inputLinc.value);
 
-    renderCards ({name: inputPlase.value, link: inputLinc.value})
+    elements.prepend(card.generateCard());
     toggleModal(addCard);
 }
 
-//Функция изменяет активный/не активный лайк
-function hendleLikeClick (evt) {
-    evt.target.classList.toggle('element__like_active');
-}
-
-//Заполнение окна увеличения картинки
-function hendleImageClick (data) {  
-    modalTitltOpen.textContent = data.name;
-    modalImageOpen. src = data.link;
-    modalImageOpen. alt = data.name;
-}
-
-//Функция описывает логику работы с карточками
-function createCard(data) {
-    const cardElement = element.cloneNode(true);
-
-    const elementImage = cardElement.querySelector('.element__img');
-    const elementTitle = cardElement.querySelector('.element__title');
-    const elementLike = cardElement.querySelector('.element__like');
-    const elementDelete = cardElement.querySelector('.element__delete');
-    
-   elementLike.addEventListener ('click', hendleLikeClick); //При клике на кнопку лайка вызывает функцию hendleLikeClick (добавляет/удаляет класс активного лайка)
-
-   elementDelete.addEventListener ('click', (evt) =>{  //Удаление эл-та Grid контейнера
-    evt.target;
-    const deleteElement = elementDelete.closest('.element');
-    deleteElement.remove();
-   })
-
-    elementImage.addEventListener ('click', () =>{ //При клике на картинку, открывает модалку просмотра картинки и заполняет ее содержимым
-    toggleModal(imageCard);
-    hendleImageClick (data);
-    })
-
-   elementTitle.textContent = data.name; //Заполнение карточки содержимым
-   elementImage. src = data.link;  
-   elementImage. alt = data.name;
-
-   return cardElement;
-}
-
-//Функция расставляет карточки в начало Grid контейнера
-function renderCards(data) {
-  
-    elements.prepend(createCard(data));
- }
-
-
  initialCards.forEach((data) =>{
+    const card = new Card(data.name, data.link);
 
-    renderCards(data)
+    elements.prepend(card.generateCard());
 
 })
 
@@ -218,8 +153,3 @@ closeModalButtonImage.addEventListener('click', () =>{
 //Работа кнопки "сохранить"
 form.addEventListener('submit', formSubmitHandler);
 addForm.addEventListener('submit', addCardSubmitHandler);
-
-
-
-
-
