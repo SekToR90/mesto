@@ -1,6 +1,7 @@
 import FormValidator from './FormValidator.js';
 import Card from './Card.js';
-import {imageCard, closeModalEscape, toggleModal} from './utils.js';
+import Section from './Section.js'
+//import {imageCard, closeModalEscape, toggleModal} from './utils.js';
 
 const modalList = Array.from(document.querySelectorAll('.modal')); //Поиск всех модалок
 
@@ -10,11 +11,11 @@ const openModalCard = document.querySelector('.profile__add-button'); //Кноп
 const addCard = document.querySelector('.modal_add-card');              // Модалка с добавлениями карточек
 const editProfile = document.querySelector('.modal_edit-profile');      //Модалка редактирования профиля
 
+const imageCard = document.querySelector('.modal_image-card');      //Модалка просмотра картинки
 
-
-const addCardCloseModalButton = addCard.querySelector('.modal__close-button'); //Кнопак закрытия модалки с добавлениями карточек
-const editProfileCloseModalButton = editProfile.querySelector('.modal__close-button'); //Кнопак закрытия модалки редактирования профиля
-const closeModalButtonImage = imageCard.querySelector('.modal__close-button'); //Кнопак закрытия модалки просмотра карточки
+//const addCardCloseModalButton = addCard.querySelector('.modal__close-button'); //Кнопак закрытия модалки с добавлениями карточек
+//const editProfileCloseModalButton = editProfile.querySelector('.modal__close-button'); //Кнопак закрытия модалки редактирования профиля
+//const closeModalButtonImage = imageCard.querySelector('.modal__close-button'); //Кнопак закрытия модалки просмотра карточки
 
 const form = editProfile.querySelector('.modal__field'); //Поля формы редактирования профиля
 const addForm = addCard.querySelector('.modal__field'); //Поля формы с добавлениями карточек
@@ -84,9 +85,9 @@ function toggleProfileModal(modal) {
 }
 
 //Функция очистки содержимого форм
-function resetInputValue(data) { 
-    data.querySelector('form').reset()
-  }
+//function resetInputValue(data) { 
+//    data.querySelector('form').reset()
+//  }
   
 //Функция присваевает значение полей input полям "имя" и "обо мне", вызывает функцию для закрытия модального окна 
 function formSubmitHandler (evt) {
@@ -106,12 +107,23 @@ function addCardSubmitHandler (evt) {
     toggleModal(addCard);
 }
 
- initialCards.forEach((data) =>{
-    const card = new Card(data.name, data.link);
+const cardsList = new Section ({
+    items: initialCards,
+    renderer: (cardItem) => {
+        const card = new Card(cardItem.name, cardItem.link);
+        cardsList.addItem(card.generateCard());
+    }
+}, elements
+);
 
-    elements.prepend(card.generateCard());
+cardsList.renderItems();
 
-})
+ //initialCards.forEach((data) =>{
+ //   const card = new Card(data.name, data.link);
+ //
+ //    elements.prepend(card.generateCard());
+
+//})
 
 //Заркытие модалки по клику мыши на экран модалки
 function closeClickModal(evt, modal) {
@@ -131,25 +143,25 @@ function closeClickModal(evt, modal) {
 openModalButton.addEventListener('click', () =>{
     toggleProfileModal(editProfile);
 });
-editProfileCloseModalButton.addEventListener('click', () =>{
-    toggleProfileModal(editProfile);
-});
+//editProfileCloseModalButton.addEventListener('click', () =>{
+//    toggleProfileModal(editProfile);
+//});
 
 //Открытие/закрытие модалки добавления новой карточки 
 openModalCard.addEventListener('click', () =>{
     toggleModal(addCard);
     resetInputValue(addCard); 
 });
-addCardCloseModalButton.addEventListener('click', () =>{
-    toggleModal(addCard);
-})
+//addCardCloseModalButton.addEventListener('click', () =>{
+//    toggleModal(addCard);
+//})
 
 //Закрытие модалки просмотра карточки
-closeModalButtonImage.addEventListener('click', () =>{
-    toggleModal(imageCard);
-});
+//closeModalButtonImage.addEventListener('click', () =>{
+//    toggleModal(imageCard);
+//});
 
 
 //Работа кнопки "сохранить"
-form.addEventListener('submit', formSubmitHandler);
-addForm.addEventListener('submit', addCardSubmitHandler);
+//form.addEventListener('submit', formSubmitHandler);
+//addForm.addEventListener('submit', addCardSubmitHandler);

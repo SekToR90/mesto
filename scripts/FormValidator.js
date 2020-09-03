@@ -87,10 +87,3 @@ export default class FormValidator {
         this._buttonElement.disabled = false;
     };
 }
-
-
-
-
-
-
-

@@ -1,9 +1,11 @@
-import {imageCard, closeModalEscape, toggleModal} from './utils.js';
+//import {imageCard, closeModalEscape, toggleModal} from './utils.js';
 
 export default class Card  {
-    constructor (name, link) {
-        this._name = name;
-        this._link = link; 
+    constructor ({ data, handleCardClick }, cardSelector) {
+        this._name = data.name;
+        this._link = data.link; 
+        this._handleCardClick = handleCardClick;
+        this._cardSelector = cardSelector;
     }
 
     _elementCard () {
