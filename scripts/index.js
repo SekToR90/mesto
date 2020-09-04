@@ -1,6 +1,10 @@
 import FormValidator from './FormValidator.js';
 import Card from './Card.js';
+
 import Section from './Section.js'
+import PopupWithImage from './PopupWithImage.js';
+import UserInfo from './UserInfo.js';
+import PopupWithForm from './PopupWithForm.js';
 //import {imageCard, closeModalEscape, toggleModal} from './utils.js';
 
 const modalList = Array.from(document.querySelectorAll('.modal')); //Поиск всех модалок
@@ -11,7 +15,7 @@ const openModalCard = document.querySelector('.profile__add-button'); //Кноп
 const addCard = document.querySelector('.modal_add-card');              // Модалка с добавлениями карточек
 const editProfile = document.querySelector('.modal_edit-profile');      //Модалка редактирования профиля
 
-const imageCard = document.querySelector('.modal_image-card');      //Модалка просмотра картинки
+//const imageCard = document.querySelector('.modal_image-card');      //Модалка просмотра картинки
 
 //const addCardCloseModalButton = addCard.querySelector('.modal__close-button'); //Кнопак закрытия модалки с добавлениями карточек
 //const editProfileCloseModalButton = editProfile.querySelector('.modal__close-button'); //Кнопак закрытия модалки редактирования профиля
@@ -90,31 +94,41 @@ function toggleProfileModal(modal) {
 //  }
   
 //Функция присваевает значение полей input полям "имя" и "обо мне", вызывает функцию для закрытия модального окна 
-function formSubmitHandler (evt) {
-    evt.preventDefault();
-
-    profileTitle.textContent = inputName.value;
-    profileSubtitle.textContent = inputAboutMe.value;
-    toggleModal(editProfile); 
-}
+//function formSubmitHandler (evt) {
+    //evt.preventDefault();
+//
+    //profileTitle.textContent = inputName.value;
+    //profileSubtitle.textContent = inputAboutMe.value;
+//    toggleModal(editProfile); 
+//}
 
 //Функция создает новую карточку 
-function addCardSubmitHandler (evt) {
-    evt.preventDefault();
-    const card = new Card(inputPlase.value, inputLinc.value);
+//function addCardSubmitHandler (evt) {
+   // evt.preventDefault();
+    //const card = new Card( , handleCardClick, '.elements-card');
 
-    elements.prepend(card.generateCard());
-    toggleModal(addCard);
-}
+   // elements.prepend(card.generateCard());
+   // toggleModal(addCard);
+//}
+
+const popupImage = new PopupWithImage ('.modal_image-card');
+
+
+
+//Создание карточек
+const handleCardClick = (name, link) => {
+    popupImage.open(name, link);
+  }
 
 const cardsList = new Section ({
     items: initialCards,
     renderer: (cardItem) => {
-        const card = new Card(cardItem.name, cardItem.link);
+        const card = new Card(cardItem, handleCardClick, '.elements-card');
         cardsList.addItem(card.generateCard());
     }
 }, elements
 );
+
 
 cardsList.renderItems();
 

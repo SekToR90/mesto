@@ -1,7 +1,7 @@
 //import {imageCard, closeModalEscape, toggleModal} from './utils.js';
 
 export default class Card  {
-    constructor ({ data, handleCardClick }, cardSelector) {
+    constructor ( data, handleCardClick, cardSelector) {
         this._name = data.name;
         this._link = data.link; 
         this._handleCardClick = handleCardClick;
@@ -9,7 +9,7 @@ export default class Card  {
     }
 
     _elementCard () {
-        this._element = document.querySelector('.elements-card').content.querySelector('.element'); //Находим Карточку внутри контейнера template     
+        this._element = document.querySelector(this._cardSelector).content.querySelector('.element'); //Находим Карточку внутри контейнера template     
         this._cardElement = this._element.cloneNode(true);
         return this._cardElement;
     }
@@ -40,14 +40,14 @@ export default class Card  {
     }
 
     //Заполнение окна увеличения картинки
-    _hendleImageClick () {          
-        this._modalImageOpen = imageCard.querySelector('.modal__image-open'); //Картинка увеличенная
-        this._modalTitltOpen = imageCard.querySelector('.modal__title-open'); //Текст для увеличенной картинки
+    //_hendleImageClick () {          
+        //this._modalImageOpen = imageCard.querySelector('.modal__image-open'); //Картинка увеличенная
+        //this._modalTitltOpen = imageCard.querySelector('.modal__title-open'); //Текст для увеличенной картинки
 
-        this._modalTitltOpen.textContent = this._name;
-        this._modalImageOpen. src = this._link;
-        this._modalImageOpen. alt = this._name;
-    }
+        //this._modalTitltOpen.textContent = this._name;
+        //this._modalImageOpen. src = this._link;
+        //this._modalImageOpen. alt = this._name;
+    //}
 
     //Слушатели событий
     _eventListener () {
@@ -61,7 +61,7 @@ export default class Card  {
 
         this._elementImage.addEventListener ('click', () =>{ //При клике на картинку, открывает модалку просмотра картинки и заполняет ее содержимым
             toggleModal(imageCard);
-            this._hendleImageClick ();
+            this._handleCardClick (this._name, this._link);
         });
     }   
 }
