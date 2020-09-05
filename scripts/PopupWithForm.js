@@ -1,7 +1,7 @@
 import Popup from './Popup.js';
 
 export default class PopupWithForm extends Popup {
-    constructor (popupSelector, callbeckSubmitForm) {
+    constructor ({popupSelector, callbeckSubmitForm}) {
         super(popupSelector);
         this._callbeckSubmitForm = callbeckSubmitForm;
     }

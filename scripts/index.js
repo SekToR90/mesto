@@ -26,6 +26,7 @@ const addForm = addCard.querySelector('.modal__field'); //Поля формы с
 
 const inputName = form.querySelector('.modal__input_name'); //Поле редактирования Имени  
 const inputAboutMe = form.querySelector('.modal__input_about-me'); //Поле редактирования Обо мне
+
 const inputPlase = addForm.querySelector('.modal__input_plase'); //Поле редактирования Названия места  
 const inputLinc = addForm.querySelector('.modal__input_link'); //Поле редактирования Ссылки на картинку
 
@@ -79,14 +80,14 @@ const initialCards = [
 
 
 //Функция при открытии модального окна "Редактировать профиль" присваевает текущее значение "имя" и "обо мне"
-function toggleProfileModal(modal) {
-    toggleModal(modal);
+// function toggleProfileModal(modal) {
+//     toggleModal(modal);
 
-    if(modal.classList.contains('modal_open')) {
-        inputName.value =  profileTitle.textContent;
-        inputAboutMe.value = profileSubtitle.textContent;
-    }
-}
+//     if(modal.classList.contains('modal_open')) {
+//         inputName.value =  profileTitle.textContent;
+//         inputAboutMe.value = profileSubtitle.textContent;
+//     }
+// }
 
 //Функция очистки содержимого форм
 //function resetInputValue(data) { 
@@ -129,8 +130,9 @@ const cardsList = new Section ({
 }, elements
 );
 
-
 cardsList.renderItems();
+//
+
 
  //initialCards.forEach((data) =>{
  //   const card = new Card(data.name, data.link);
@@ -139,33 +141,60 @@ cardsList.renderItems();
 
 //})
 
-//Заркытие модалки по клику мыши на экран модалки
-function closeClickModal(evt, modal) {
-    if (evt.target.classList.contains('modal')) {
-        modal.classList.remove('modal_open');
-    }
-  } 
+// //Заркытие модалки по клику мыши на экран модалки
+// function closeClickModal(evt, modal) {
+//     if (evt.target.classList.contains('modal')) {
+//         modal.classList.remove('modal_open');
+//     }
+//   } 
 
-  modalList.forEach((modalElement) => {
-    modalElement.addEventListener('mousedown', (evt) => {
-        closeClickModal(evt, modalElement);
-    });
-  });
+//   modalList.forEach((modalElement) => {
+//     modalElement.addEventListener('mousedown', (evt) => {
+//         closeClickModal(evt, modalElement);
+//     });
+//   });
 
+
+const userInfo = new UserInfo (profileTitle, profileSubtitle); 
 
 //Открытие/закрытие модалки редактирование профиля  
 openModalButton.addEventListener('click', () =>{
-    toggleProfileModal(editProfile);
+    modalButton.open();
+    userInfo.getUserInfo(inputName, inputAboutMe);
 });
+
+const modalButton = new PopupWithForm ({
+    popupSelector: '.modal_edit-profile', 
+    callbeckSubmitForm: () => {
+        userInfo.setUserInfo(inputName, inputAboutMe);
+        modalButton.close();
+    }
+});
+
+modalButton.setEventListeners();
+//
+
+
 //editProfileCloseModalButton.addEventListener('click', () =>{
 //    toggleProfileModal(editProfile);
 //});
 
 //Открытие/закрытие модалки добавления новой карточки 
 openModalCard.addEventListener('click', () =>{
-    toggleModal(addCard);
-    resetInputValue(addCard); 
+    modalCard.open();
 });
+
+const modalCard = new PopupWithForm ({
+    popupSelector: '.modal_add-card', 
+    callbeckSubmitForm: () => {
+        cardsList.renderer({name: inputPlase.value, link: inputLinc.value});
+        modalCard.close();
+    }
+});
+
+modalCard.setEventListeners();
+
+
 //addCardCloseModalButton.addEventListener('click', () =>{
 //    toggleModal(addCard);
 //})

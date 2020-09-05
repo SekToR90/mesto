@@ -60,7 +60,8 @@ export default class Card  {
         }); 
 
         this._elementImage.addEventListener ('click', () =>{ //При клике на картинку, открывает модалку просмотра картинки и заполняет ее содержимым
-            toggleModal(imageCard);
+            //toggleModal(imageCard);
+            
             this._handleCardClick (this._name, this._link);
         });
     }   
