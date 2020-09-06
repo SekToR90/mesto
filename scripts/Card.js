@@ -1,5 +1,3 @@
-//import {imageCard, closeModalEscape, toggleModal} from './utils.js';
-
 export default class Card  {
     constructor ( data, handleCardClick, cardSelector) {
         this._name = data.name;
@@ -39,16 +37,6 @@ export default class Card  {
         this._element.querySelector('.element__like').classList.toggle('element__like_active');
     }
 
-    //Заполнение окна увеличения картинки
-    //_hendleImageClick () {          
-        //this._modalImageOpen = imageCard.querySelector('.modal__image-open'); //Картинка увеличенная
-        //this._modalTitltOpen = imageCard.querySelector('.modal__title-open'); //Текст для увеличенной картинки
-
-        //this._modalTitltOpen.textContent = this._name;
-        //this._modalImageOpen. src = this._link;
-        //this._modalImageOpen. alt = this._name;
-    //}
-
     //Слушатели событий
     _eventListener () {
         this._element.querySelector('.element__delete').addEventListener ('click', () =>{  //Удаление эл-та Grid контейнера
@@ -59,9 +47,7 @@ export default class Card  {
             this._hendleLikeClick ()
         }); 
 
-        this._elementImage.addEventListener ('click', () =>{ //При клике на картинку, открывает модалку просмотра картинки и заполняет ее содержимым
-            //toggleModal(imageCard);
-            
+        this._elementImage.addEventListener ('click', () =>{ //При клике на картинку, открывает модалку просмотра картинки и заполняет ее содержимым     
             this._handleCardClick (this._name, this._link);
         });
     }   

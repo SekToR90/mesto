@@ -22,7 +22,7 @@ export default class Popup {
         this._escClose = (evt) => {
             if (evt.key === "Escape") {
                 this.close();
-             };
+             }
         }  
         return this._escClose;
     }
