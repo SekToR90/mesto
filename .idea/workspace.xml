@@ -3,7 +3,11 @@
   <component name="ChangeListManager">
     <list default="true" id="44f2c1fc-4df8-4aa6-80eb-899f0f7d3b1f" name="Default Changelist" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/package.json" beforeDir="false" afterPath="$PROJECT_DIR$/package.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/components/Card.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/Card.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/components/PopupWithForm.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/PopupWithForm.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/components/PopupWithImage.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/PopupWithImage.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/components/UserInfo.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/UserInfo.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/pages/index.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/pages/index.js" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -29,6 +33,16 @@
       <recent name="C:\Users\Niks\dev\mesto\src\pages" />
     </key>
   </component>
+  <component name="RunManager">
+    <configuration name="index.html" type="JavascriptDebugType" temporary="true" nameIsGenerated="true" uri="http://localhost:63342/mesto/src/index.html" useBuiltInWebServerPort="true">
+      <method v="2" />
+    </configuration>
+    <recent_temporary>
+      <list>
+        <item itemvalue="JavaScript Debug.index.html" />
+      </list>
+    </recent_temporary>
+  </component>
   <component name="SvnConfiguration">
     <configuration />
   </component>
@@ -48,7 +62,9 @@
       <workItem from="1599418358785" duration="576000" />
       <workItem from="1599418962080" duration="361000" />
       <workItem from="1599419332782" duration="2306000" />
-      <workItem from="1599421653946" duration="846000" />
+      <workItem from="1599421653946" duration="2286000" />
+      <workItem from="1599471174415" duration="10500000" />
+      <workItem from="1599500724489" duration="7126000" />
     </task>
     <servers />
   </component>
@@ -60,5 +76,17 @@
       <screen x="-2560" y="-211" width="2560" height="1440" />
     </state>
     <state x="-1655" y="76" key="CommitChangelistDialog2/0.0.1920.1040/-2560.-211.2560.1440@-2560.-211.2560.1440" timestamp="1599420372844" />
+    <state x="-1426" y="228" key="RollbackChangesDialog" timestamp="1599500701939">
+      <screen x="-2560" y="-211" width="2560" height="1440" />
+    </state>
+    <state x="-1426" y="228" key="RollbackChangesDialog/0.0.1920.1040/-2560.-211.2560.1440@-2560.-211.2560.1440" timestamp="1599500701939" />
+    <state x="-1574" y="108" width="587" height="801" key="find.popup" timestamp="1599512783351">
+      <screen x="-2560" y="-211" width="2560" height="1440" />
+    </state>
+    <state x="-1574" y="108" width="587" height="801" key="find.popup/0.0.1920.1040/-2560.-211.2560.1440@-2560.-211.2560.1440" timestamp="1599512783351" />
+    <state x="-1437" y="280" key="refactoring.ChangeSignatureDialog" timestamp="1599512642666">
+      <screen x="-2560" y="-211" width="2560" height="1440" />
+    </state>
+    <state x="-1437" y="280" key="refactoring.ChangeSignatureDialog/0.0.1920.1040/-2560.-211.2560.1440@-2560.-211.2560.1440" timestamp="1599512642666" />
   </component>
 </project>

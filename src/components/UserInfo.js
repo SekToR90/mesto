@@ -4,10 +4,10 @@ export default class UserInfo {
         this._elementInfoMe = elementInfoMe;
     }
 
-    getUserInfo(newName, newInfoMe) {
+    getUserInfo() {
         return{
-           name: newName.value =  this._elementName.textContent,
-           info: newInfoMe.value = this._elementInfoMe.textContent
+           name: this._elementName.textContent,
+           info: this._elementInfoMe.textContent
         }
     }
 

@@ -28,23 +28,23 @@ export default class Card  {
     } 
 
     //Удаляет карточку
-    _hendleDeleteCard () {
+    _handleDeleteCard () {
         this._element.remove();
     }
     
     //Изменяет активный/не активный лайк
-    _hendleLikeClick () {
+    _handleLikeClick () {
         this._element.querySelector('.element__like').classList.toggle('element__like_active');
     }
 
     //Слушатели событий
     _eventListener () {
         this._element.querySelector('.element__delete').addEventListener ('click', () =>{  //Удаление эл-та Grid контейнера
-            this._hendleDeleteCard ();
+            this._handleDeleteCard ();
         });
 
         this._element.querySelector('.element__like').addEventListener ('click', () => {  //При клике на кнопку лайка вызывает функцию hendleLikeClick (добавляет/удаляет класс активного лайка)
-            this._hendleLikeClick ()
+            this._handleLikeClick ()
         }); 
 
         this._elementImage.addEventListener ('click', () =>{ //При клике на картинку, открывает модалку просмотра картинки и заполняет ее содержимым     

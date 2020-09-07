@@ -88,17 +88,19 @@ const cardsList = new Section ({
 cardsList.renderItems();
 //
 
-const userInfo = new UserInfo (profileTitle, profileSubtitle); 
+const userInfo = new UserInfo (profileTitle, profileSubtitle);
 
-//Открытие/закрытие модалки редактирование профиля  
+//Открытие/закрытие модалки редактирование профиля
 openModalButton.addEventListener('click', () =>{
     modalButton.open();
-    userInfo.getUserInfo(inputName, inputAboutMe);
+
+    inputName.value = userInfo.getUserInfo().name;
+    inputAboutMe.value = userInfo.getUserInfo().info;
 });
 
 const modalButton = new PopupWithForm ({
-    popupSelector: '.modal_edit-profile', 
-    callbeckSubmitForm: () => {
+    popupSelector: '.modal_edit-profile',
+    callbackSubmitForm: () => {
         userInfo.setUserInfo(inputName, inputAboutMe);
         modalButton.close();
     }
@@ -114,10 +116,12 @@ openModalCard.addEventListener('click', () =>{
 
 const modalCard = new PopupWithForm ({
     popupSelector: '.modal_add-card', 
-    callbeckSubmitForm: () => {
+    callbackSubmitForm: () => {
         cardsList.renderer({name: inputPlase.value, link: inputLinc.value});
         modalCard.close();
     }
 });
 
 modalCard.setEventListeners();
+
+popupImage.setEventListeners();
