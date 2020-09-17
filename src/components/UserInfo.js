@@ -1,7 +1,8 @@
 export default class UserInfo {
-    constructor (elementName, elementInfoMe) {
-        this._elementName = elementName;
-        this._elementInfoMe = elementInfoMe;
+    constructor ({name, about, avatar}) {
+        this._elementName = name;
+        this._elementInfoMe = about;
+        this._elementAvatar = avatar;
     }
 
     getUserInfo() {
@@ -11,8 +12,13 @@ export default class UserInfo {
         }
     }
 
-    setUserInfo(newName, newInfoMe) {
-        this._elementName.textContent = newName.value;
-        this._elementInfoMe.textContent = newInfoMe.value;
+    setUserInfo({name, about, avatar}) {
+        this._elementName.textContent = name;
+        this._elementInfoMe.textContent = about;
+        this._elementAvatar.src = avatar;
     }
+
+    // setUserAvatar(avatar) {
+    //
+    // }
 }

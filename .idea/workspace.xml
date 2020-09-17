@@ -3,16 +3,30 @@
   <component name="ChangeListManager">
     <list default="true" id="44f2c1fc-4df8-4aa6-80eb-899f0f7d3b1f" name="Default Changelist" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/components/Card.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/Card.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/blocks/element/element.css" beforeDir="false" afterPath="$PROJECT_DIR$/src/blocks/element/element.css" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/blocks/modal/__button-save/modal__button-save.css" beforeDir="false" afterPath="$PROJECT_DIR$/src/blocks/modal/__button-save/modal__button-save.css" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/blocks/modal/__field/modal__field.css" beforeDir="false" afterPath="$PROJECT_DIR$/src/blocks/modal/__field/modal__field.css" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/blocks/profile/__avatar/profile__avatar.css" beforeDir="false" afterPath="$PROJECT_DIR$/src/blocks/profile/__avatar/profile__avatar.css" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/blocks/profile/profile.css" beforeDir="false" afterPath="$PROJECT_DIR$/src/blocks/profile/profile.css" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/components/PopupWithForm.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/PopupWithForm.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/components/PopupWithImage.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/PopupWithImage.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/components/Section.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/Section.js" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/components/UserInfo.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/UserInfo.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/index.html" beforeDir="false" afterPath="$PROJECT_DIR$/src/index.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/pages/index.css" beforeDir="false" afterPath="$PROJECT_DIR$/src/pages/index.css" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/pages/index.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/pages/index.js" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
     <option name="LAST_RESOLUTION" value="IGNORE" />
+  </component>
+  <component name="FileTemplateManagerImpl">
+    <option name="RECENT_TEMPLATES">
+      <list>
+        <option value="JavaScript File" />
+        <option value="CSS File" />
+      </list>
+    </option>
   </component>
   <component name="Git.Settings">
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
@@ -26,6 +40,7 @@
     <property name="RunOnceActivity.OpenProjectViewOnStart" value="true" />
     <property name="RunOnceActivity.ShowReadmeOnStart" value="true" />
     <property name="WebServerToolWindowFactoryState" value="false" />
+    <property name="list.type.of.created.stylesheet" value="CSS" />
     <property name="nodejs_package_manager_path" value="npm" />
   </component>
   <component name="RecentsManager">
@@ -64,7 +79,16 @@
       <workItem from="1599419332782" duration="2306000" />
       <workItem from="1599421653946" duration="2286000" />
       <workItem from="1599471174415" duration="10500000" />
-      <workItem from="1599500724489" duration="7126000" />
+      <workItem from="1599500724489" duration="8189000" />
+      <workItem from="1599674273770" duration="408000" />
+      <workItem from="1599778202048" duration="408000" />
+      <workItem from="1599836500745" duration="605000" />
+      <workItem from="1599859047326" duration="188000" />
+      <workItem from="1599994338300" duration="3354000" />
+      <workItem from="1600075138767" duration="15042000" />
+      <workItem from="1600159524724" duration="22672000" />
+      <workItem from="1600247596689" duration="22110000" />
+      <workItem from="1600334276890" duration="1303000" />
     </task>
     <servers />
   </component>
@@ -72,6 +96,10 @@
     <option name="version" value="2" />
   </component>
   <component name="WindowStateProjectService">
+    <state x="-1544" y="310" key="#com.intellij.fileTypes.FileTypeChooser" timestamp="1599996061811">
+      <screen x="-2560" y="-211" width="2560" height="1440" />
+    </state>
+    <state x="-1544" y="310" key="#com.intellij.fileTypes.FileTypeChooser/0.0.1920.1040/-2560.-211.2560.1440@-2560.-211.2560.1440" timestamp="1599996061811" />
     <state x="-1655" y="76" key="CommitChangelistDialog2" timestamp="1599420372844">
       <screen x="-2560" y="-211" width="2560" height="1440" />
     </state>
@@ -80,13 +108,17 @@
       <screen x="-2560" y="-211" width="2560" height="1440" />
     </state>
     <state x="-1426" y="228" key="RollbackChangesDialog/0.0.1920.1040/-2560.-211.2560.1440@-2560.-211.2560.1440" timestamp="1599500701939" />
-    <state x="-1574" y="108" width="587" height="801" key="find.popup" timestamp="1599512783351">
+    <state x="-1574" y="108" width="587" height="801" key="find.popup" timestamp="1600277521476">
       <screen x="-2560" y="-211" width="2560" height="1440" />
     </state>
-    <state x="-1574" y="108" width="587" height="801" key="find.popup/0.0.1920.1040/-2560.-211.2560.1440@-2560.-211.2560.1440" timestamp="1599512783351" />
+    <state x="-1574" y="108" width="587" height="801" key="find.popup/0.0.1920.1040/-2560.-211.2560.1440@-2560.-211.2560.1440" timestamp="1600277521476" />
     <state x="-1437" y="280" key="refactoring.ChangeSignatureDialog" timestamp="1599512642666">
       <screen x="-2560" y="-211" width="2560" height="1440" />
     </state>
     <state x="-1437" y="280" key="refactoring.ChangeSignatureDialog/0.0.1920.1040/-2560.-211.2560.1440@-2560.-211.2560.1440" timestamp="1599512642666" />
+    <state x="623" y="225" width="672" height="678" key="search.everywhere.popup" timestamp="1600207057939">
+      <screen x="0" y="0" width="1920" height="1040" />
+    </state>
+    <state x="623" y="225" width="672" height="678" key="search.everywhere.popup/0.0.1920.1040/-2560.-211.2560.1440@0.0.1920.1040" timestamp="1600207057939" />
   </component>
 </project>

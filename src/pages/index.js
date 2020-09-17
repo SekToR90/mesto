@@ -5,12 +5,15 @@ import Section from '../components/Section.js'
 import PopupWithImage from '../components/PopupWithImage.js';
 import UserInfo from '../components/UserInfo.js';
 import PopupWithForm from '../components/PopupWithForm.js';
+import Api from '../components/Api';
 
 const openModalButton = document.querySelector('.profile__edit-button'); //Кнопка редактирования профиля
-const openModalCard = document.querySelector('.profile__add-button'); //Кнопка для добавления карточек 
+const openModalCard = document.querySelector('.profile__add-button'); //Кнопка для добавления карточек
+const openModalAvatar = document.querySelector('.profile__edit-avatar'); //Кнопка для открытия модалки редактирования аватара
 
 const addCard = document.querySelector('.modal_add-card');              // Модалка с добавлениями карточек
 const editProfile = document.querySelector('.modal_edit-profile');      //Модалка редактирования профиля
+const userAvatar = document.querySelector('.modal_edit-avatar');        //Модалка редактирования аватара
 
 const form = editProfile.querySelector('.modal__field'); //Поля формы редактирования профиля
 const addForm = addCard.querySelector('.modal__field'); //Поля формы с добавлениями карточек
@@ -24,10 +27,11 @@ const inputLinc = addForm.querySelector('.modal__input_link'); //Поле ред
 
 const profileTitle = document.querySelector('.profile__title'); // Поле "Имя"
 const profileSubtitle = document.querySelector('.profile__subtitle'); //Поле "Обо мне"
+const profileAvatar = document.querySelector('.profile__avatar'); //Картинка аватара
 
 const elements = document.querySelector('.elements'); //Находим секцию с элементами в которой находятся все карточки
 
-
+//Валидация
 const enableValidation = {
     formSelector: '.modal__field', // Класс самой формы
     inputSelector: '.modal__input', // класс всех input
@@ -39,35 +43,47 @@ const enableValidation = {
 
 const editFormValidator = new FormValidator(enableValidation, editProfile);
 const addCardFormValidator = new FormValidator(enableValidation, addCard);
+const userAvatarFormValidator = new FormValidator(enableValidation, userAvatar);
+
 editFormValidator.enableValidation();
 addCardFormValidator.enableValidation();
- 
-const initialCards = [
-    {
-        name: 'Архыз',
-        link: 'https://pictures.s3.yandex.net/frontend-developer/cards-compressed/arkhyz.jpg'
-    },
-    {
-        name: 'Челябинская область',
-        link: 'https://pictures.s3.yandex.net/frontend-developer/cards-compressed/chelyabinsk-oblast.jpg'
-    },
-    {
-        name: 'Иваново',
-        link: 'https://pictures.s3.yandex.net/frontend-developer/cards-compressed/ivanovo.jpg'
-    },
-    {
-        name: 'Камчатка',
-        link: 'https://pictures.s3.yandex.net/frontend-developer/cards-compressed/kamchatka.jpg'
-    },
-    {
-        name: 'Холмогорский район',
-        link: 'https://pictures.s3.yandex.net/frontend-developer/cards-compressed/kholmogorsky-rayon.jpg'
-    },
-    {
-        name: 'Байкал',
-        link: 'https://pictures.s3.yandex.net/frontend-developer/cards-compressed/baikal.jpg'
-    }
-];
+userAvatarFormValidator.enableValidation();
+//
+
+const api = new Api({
+    url: 'https://mesto.nomoreparties.co/v1/cohort-15',
+    headers: {
+        authorization: '179efea0-82b8-4273-a721-e2de6a729aed',
+        'Content-type': 'application/json'
+}
+});
+
+// const initialCards = [
+//     {
+//         name: 'Архыз',
+//         link: 'https://pictures.s3.yandex.net/frontend-developer/cards-compressed/arkhyz.jpg'
+//     },
+//     {
+//         name: 'Челябинская область',
+//         link: 'https://pictures.s3.yandex.net/frontend-developer/cards-compressed/chelyabinsk-oblast.jpg'
+//     },
+//     {
+//         name: 'Иваново',
+//         link: 'https://pictures.s3.yandex.net/frontend-developer/cards-compressed/ivanovo.jpg'
+//     },
+//     {
+//         name: 'Камчатка',
+//         link: 'https://pictures.s3.yandex.net/frontend-developer/cards-compressed/kamchatka.jpg'
+//     },
+//     {
+//         name: 'Холмогорский район',
+//         link: 'https://pictures.s3.yandex.net/frontend-developer/cards-compressed/kholmogorsky-rayon.jpg'
+//     },
+//     {
+//         name: 'Байкал',
+//         link: 'https://pictures.s3.yandex.net/frontend-developer/cards-compressed/baikal.jpg'
+//     }
+// ];
 
 const popupImage = new PopupWithImage ('.modal_image-card');
 
@@ -77,7 +93,6 @@ const handleCardClick = (name, link) => {
   }
 
 const cardsList = new Section ({
-    items: initialCards,
     renderer: (cardItem) => {
         const card = new Card(cardItem, handleCardClick, '.elements-card');
         cardsList.addItem(card.generateCard());
@@ -85,10 +100,52 @@ const cardsList = new Section ({
 }, elements
 );
 
-cardsList.renderItems();
+api.getAllCards()
+    .then ((data) => {
+        cardsList.renderItems(data);
+    })
+    .catch((err) => {
+        console.log(err);
+    });
 //
 
-const userInfo = new UserInfo (profileTitle, profileSubtitle);
+//данные пользователя
+const userInfo = new UserInfo ({
+    name: profileTitle,
+    about:  profileSubtitle,
+    avatar: profileAvatar
+    });
+
+api.getUserMe()
+    .then ((data) => {
+        userInfo.setUserInfo(data);
+    })
+    .catch((err) => {
+        console.log(err);
+    });
+//
+
+//Изменение аватара
+openModalAvatar.addEventListener('click', () =>{
+    modalAvatar.open();
+});
+
+const modalAvatar = new PopupWithForm({
+    popupSelector: '.modal_edit-avatar',
+    callbackSubmitForm: (value) => {
+        api.patchUsersAvatar(value)
+            .then((data) => {
+                userInfo.setUserInfo(data);
+                modalAvatar.close();
+            })
+            .catch((err) => {
+                console.log(err);
+            })
+    }
+})
+
+modalAvatar.setEventListeners();
+//
 
 //Открытие/закрытие модалки редактирование профиля
 openModalButton.addEventListener('click', () =>{
@@ -100,9 +157,15 @@ openModalButton.addEventListener('click', () =>{
 
 const modalButton = new PopupWithForm ({
     popupSelector: '.modal_edit-profile',
-    callbackSubmitForm: () => {
-        userInfo.setUserInfo(inputName, inputAboutMe);
-        modalButton.close();
+    callbackSubmitForm: (value) => {
+        api.patchUsersMe(value)
+            .then((data) => {
+                userInfo.setUserInfo(data);
+                modalButton.close();
+            })
+            .catch((err) => {
+                console.log(err);
+            })
     }
 });
 
@@ -116,11 +179,19 @@ openModalCard.addEventListener('click', () =>{
 
 const modalCard = new PopupWithForm ({
     popupSelector: '.modal_add-card', 
-    callbackSubmitForm: () => {
-        cardsList.renderer({name: inputPlase.value, link: inputLinc.value});
-        modalCard.close();
+    callbackSubmitForm: (value) => {
+
+        api.postAddCard(value)
+            .then((data) => {
+                cardsList.renderer(data);
+                modalCard.close();
+            })
+            .catch((err) => {
+                console.log(err);
+            })
     }
 });
+
 
 modalCard.setEventListeners();
 

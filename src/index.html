@@ -13,7 +13,10 @@
         <main class="content">
           <section class="profile">
             <div class="profile__container">
-              <img class="profile__avatar" src="./images/avatar-photo.jpg" alt="Аватар">
+              <button type="button" class = "profile__edit-avatar">
+                <img class="profile__avatar" src="#" alt="Аватар">
+                <div class="profile__overlay"></div>
+              </button>
               <div class="profile__info">
                 <div class="profile__info-button">
                   <h1 class="profile__title">Жак-Ив Кусто</h1>
@@ -86,13 +89,42 @@
       </div>
     </div>
 
+    <div class="modal modal_delete-card">
+      <div class="modal__container">
+        <button type="button" class="modal__close-button">
+          <img class="modal__close" src="./images/close-icon.svg" alt="Кнопка_выхода">
+        </button>
+        <h2 class="modal__title">Вы уверены?</h2>
+          <button type="submit" class="modal__button-save">Да</button>
+      </div>
+    </div>
+
+    <div class="modal modal_edit-avatar">
+      <div class="modal__container">
+        <button type="button" class="modal__close-button">
+          <img class="modal__close" src="./images/close-icon.svg" alt="Кнопка_выхода">
+        </button>
+        <h2 class="modal__title">Новое место</h2>
+        <form action="#" name="form" class="modal__field" novalidate>
+
+          <input type="url" name="urlAvatar" class="modal__input modal__input_link-avatar" placeholder="Ссылка на картинку" required autocomplete="off">
+          <span class="modal__error" id="urlAvatar-error"></span>
+
+          <button type="submit" class="modal__button-save modal__button-save_disabled" disabled>Сохранить</button>
+        </form>
+      </div>
+    </div>
+
     <template class="elements-card">
       <div class="element">
         <button type="button" class="element__delete"></button>
         <img class="element__img" alt="">
         <div class="element__group">
           <h2 class="element__title"></h2>
-          <button type="button" class="element__like"></button>
+          <div>
+            <button type="button" class="element__like"></button>
+            <h3 class="element__like_title">1</h3>
+          </div>
         </div>
       </div>
     </template>
