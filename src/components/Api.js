@@ -86,7 +86,7 @@ export default class Api {
     }
 
     //Запрос на лайк карточки
-    putLikeCards() {
+    putLikeCards(id) {
         return fetch(`${this.url}/cards/likes/${id}`, {
             method: 'PUT',
             headers: this.headers,
@@ -100,8 +100,22 @@ export default class Api {
     }
 
     //Запрос на снятие лайка
-    deleteLikeCards() {
+    deleteLikeCards(id) {
         return fetch(`${this.url}/cards/likes/${id}`, {
+            method: 'DELETE',
+            headers: this.headers,
+        })
+            .then((res) => {
+                if(res.ok) {
+                    return res.json();
+                }
+                return Promise.reject(`Ошибка: ${res.status}`);
+            });
+    }
+
+    //Запрос на удаление карточки
+    deleteCards(id) {
+        return fetch(`${this.url}/cards/${id}`, {
             method: 'DELETE',
             headers: this.headers,
         })

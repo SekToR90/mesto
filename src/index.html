@@ -74,7 +74,7 @@
           <input type="url" name="url" class="modal__input modal__input_link" placeholder="Ссылка на картинку" required autocomplete="off">
           <span class="modal__error" id="url-error"></span>
 
-          <button type="submit" class="modal__button-save modal__button-save_disabled" disabled>Сохранить</button>
+          <button type="submit" class="modal__button-save modal__button-save_disabled" disabled>Создать</button>
         </form>
       </div>
     </div>
@@ -95,7 +95,9 @@
           <img class="modal__close" src="./images/close-icon.svg" alt="Кнопка_выхода">
         </button>
         <h2 class="modal__title">Вы уверены?</h2>
+        <form action="#" name="form" class="modal__field" novalidate>
           <button type="submit" class="modal__button-save">Да</button>
+        </form>
       </div>
     </div>
 
@@ -104,7 +106,7 @@
         <button type="button" class="modal__close-button">
           <img class="modal__close" src="./images/close-icon.svg" alt="Кнопка_выхода">
         </button>
-        <h2 class="modal__title">Новое место</h2>
+        <h2 class="modal__title">Обновить аватар</h2>
         <form action="#" name="form" class="modal__field" novalidate>
 
           <input type="url" name="urlAvatar" class="modal__input modal__input_link-avatar" placeholder="Ссылка на картинку" required autocomplete="off">
@@ -123,7 +125,7 @@
           <h2 class="element__title"></h2>
           <div>
             <button type="button" class="element__like"></button>
-            <h3 class="element__like_title">1</h3>
+            <h3 class="element__like_title"></h3>
           </div>
         </div>
       </div>

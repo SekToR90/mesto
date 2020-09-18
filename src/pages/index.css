@@ -11,3 +11,4 @@
 @import url(../blocks/element/__like/_active/element__like_active.css);
 @import url(../blocks/modal/__input/_type/modal__input_type_error.css);
 @import url(../blocks/modal/__button-save/_disabled/modal__button-save_disabled.css);
+@import url(../blocks/element/__delete/_inactive/element__delete_inactive.css);

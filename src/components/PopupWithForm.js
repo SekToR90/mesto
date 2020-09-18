@@ -4,7 +4,8 @@ export default class PopupWithForm extends Popup {
     constructor ({popupSelector, callbackSubmitForm}) {
         super(popupSelector);
         this._callbackSubmitForm = callbackSubmitForm;
-        this._form = this._popupSelector.querySelector('form')
+        this._form = this._popupSelector.querySelector('form');
+        this._buttonSave = this._popupSelector.querySelector('.modal__button-save');
     }
 
     _getInputValues() {
@@ -22,6 +23,14 @@ export default class PopupWithForm extends Popup {
         .addEventListener('submit', () => {
             this._callbackSubmitForm(this._getInputValues());
         });
+    }
+
+    setTextSave() {
+        this._buttonSave.textContent = 'Сохранение...';
+    }
+
+    setTextDefault() {
+        this._buttonSave.textContent = 'Сохранить';
     }
 
     close() {

@@ -6,6 +6,7 @@ import PopupWithImage from '../components/PopupWithImage.js';
 import UserInfo from '../components/UserInfo.js';
 import PopupWithForm from '../components/PopupWithForm.js';
 import Api from '../components/Api';
+import PopupWithSubmit from '../components/PopupWithSubmit'
 
 const openModalButton = document.querySelector('.profile__edit-button'); //Кнопка редактирования профиля
 const openModalCard = document.querySelector('.profile__add-button'); //Кнопка для добавления карточек
@@ -58,33 +59,6 @@ const api = new Api({
 }
 });
 
-// const initialCards = [
-//     {
-//         name: 'Архыз',
-//         link: 'https://pictures.s3.yandex.net/frontend-developer/cards-compressed/arkhyz.jpg'
-//     },
-//     {
-//         name: 'Челябинская область',
-//         link: 'https://pictures.s3.yandex.net/frontend-developer/cards-compressed/chelyabinsk-oblast.jpg'
-//     },
-//     {
-//         name: 'Иваново',
-//         link: 'https://pictures.s3.yandex.net/frontend-developer/cards-compressed/ivanovo.jpg'
-//     },
-//     {
-//         name: 'Камчатка',
-//         link: 'https://pictures.s3.yandex.net/frontend-developer/cards-compressed/kamchatka.jpg'
-//     },
-//     {
-//         name: 'Холмогорский район',
-//         link: 'https://pictures.s3.yandex.net/frontend-developer/cards-compressed/kholmogorsky-rayon.jpg'
-//     },
-//     {
-//         name: 'Байкал',
-//         link: 'https://pictures.s3.yandex.net/frontend-developer/cards-compressed/baikal.jpg'
-//     }
-// ];
-
 const popupImage = new PopupWithImage ('.modal_image-card');
 
 //Создание карточек
@@ -94,8 +68,10 @@ const handleCardClick = (name, link) => {
 
 const cardsList = new Section ({
     renderer: (cardItem) => {
-        const card = new Card(cardItem, handleCardClick, '.elements-card');
-        cardsList.addItem(card.generateCard());
+        const card = new Card(cardItem, handleCardClick, handleCardLike, cardDelete, '.elements-card');
+
+        const userId = userInfo.getUserId();
+        cardsList.addItem(card.generateCard(userId));
     }
 }, elements
 );
@@ -107,6 +83,50 @@ api.getAllCards()
     .catch((err) => {
         console.log(err);
     });
+//
+
+//Лайк карточки
+const handleCardLike = function () {
+    this.handleLikeClick ();
+    if(this.activeLike()) {
+        api.putLikeCards(this.cardId)
+            .then((data) => {
+                this.updateData(data)
+            })
+            .catch((err) => {
+                console.log(err);
+            });
+    } else {
+        api.deleteLikeCards(this.cardId)
+            .then((data) => {
+                this.updateData(data)
+            })
+            .catch((err) => {
+                console.log(err);
+            });
+    }
+}
+//
+
+//Удаление карточки
+const deleteForm = new PopupWithSubmit('.modal_delete-card');
+
+ const cardDelete = function() {
+    deleteForm.open();
+    deleteForm.setSubmit(() => {
+        api.deleteCards(this.cardId)
+            .then((data) => {
+                this._cardElement.remove(data);
+                this._cardElement = null;
+                deleteForm.close();
+            })
+            .catch((err) => {
+                console.log(err);
+            });
+    })
+}
+
+deleteForm.setEventListeners();
 //
 
 //данные пользователя
@@ -133,6 +153,7 @@ openModalAvatar.addEventListener('click', () =>{
 const modalAvatar = new PopupWithForm({
     popupSelector: '.modal_edit-avatar',
     callbackSubmitForm: (value) => {
+        modalAvatar. setTextSave();
         api.patchUsersAvatar(value)
             .then((data) => {
                 userInfo.setUserInfo(data);
@@ -140,6 +161,9 @@ const modalAvatar = new PopupWithForm({
             })
             .catch((err) => {
                 console.log(err);
+            })
+            .finally(()=> {
+                modalAvatar.setTextDefault();
             })
     }
 })
@@ -158,6 +182,7 @@ openModalButton.addEventListener('click', () =>{
 const modalButton = new PopupWithForm ({
     popupSelector: '.modal_edit-profile',
     callbackSubmitForm: (value) => {
+        modalButton. setTextSave();
         api.patchUsersMe(value)
             .then((data) => {
                 userInfo.setUserInfo(data);
@@ -165,6 +190,9 @@ const modalButton = new PopupWithForm ({
             })
             .catch((err) => {
                 console.log(err);
+            })
+            .finally(()=> {
+                modalButton.setTextDefault();
             })
     }
 });
@@ -180,7 +208,7 @@ openModalCard.addEventListener('click', () =>{
 const modalCard = new PopupWithForm ({
     popupSelector: '.modal_add-card', 
     callbackSubmitForm: (value) => {
-
+        modalCard. setTextSave();
         api.postAddCard(value)
             .then((data) => {
                 cardsList.renderer(data);
@@ -188,6 +216,9 @@ const modalCard = new PopupWithForm ({
             })
             .catch((err) => {
                 console.log(err);
+            })
+            .finally(()=> {
+                modalCard.setTextDefault();
             })
     }
 });
