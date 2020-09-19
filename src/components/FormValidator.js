@@ -58,6 +58,13 @@ export default class FormValidator {
             });
     };
 
+    //Скрываем ошибки в импутах
+    resetInputErrors() {
+        this._inputList.forEach(item => {
+            this._hideInputError(item);
+        });
+    }
+
     //Функции для Button
     _hasInvalidInput () {
         return this._inputList.some((inputElement) => {
@@ -70,7 +77,7 @@ export default class FormValidator {
         if (this._hasInvalidInput()) {
             this._addButtonDisabled()
         } else {
-            this._removeButtonDisabled()
+            this.removeButtonDisabled()
         }
     };
 
@@ -81,7 +88,7 @@ export default class FormValidator {
         this._buttonElement.disabled = true;
     };
 
-    _removeButtonDisabled() {
+    removeButtonDisabled() {
         this._buttonElement = this._formElement.querySelector(this._submitButtonSelector);
         this._buttonElement.classList.remove(this._inactiveButtonClass);
         this._buttonElement.disabled = false;

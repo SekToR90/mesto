@@ -66,23 +66,51 @@ const handleCardClick = (name, link) => {
     popupImage.open(name, link);
   }
 
-const cardsList = new Section ({
-    renderer: (cardItem) => {
-        const card = new Card(cardItem, handleCardClick, handleCardLike, cardDelete, '.elements-card');
 
-        const userId = userInfo.getUserId();
-        cardsList.addItem(card.generateCard(userId));
-    }
-}, elements
-);
 
-api.getAllCards()
-    .then ((data) => {
-        cardsList.renderItems(data);
+Promise.all(
+    [
+        api.getAllCards(),
+        api.getUserMe()
+    ]
+)
+    .then (([initialCards, userData]) => {
+        userInfo.setUserInfo(userData);
+        const cardsList = new Section ({
+                renderer: (cardItem) => {
+                    const card = new Card(cardItem, handleCardClick, handleCardLike, cardDelete, '.elements-card');
+
+                    const userId = userInfo.getUserId();
+                    cardsList.addItemCard(card.generateCard(userId));
+                }
+            }, elements
+        );
+        cardsList.renderItems(initialCards);
+
+        openModalCard.addEventListener('click', () =>{
+            modalCard.open();
+            addCardFormValidator.resetInputErrors();
+        });
+
+        openModalAvatar.addEventListener('click', () =>{
+            modalAvatar.open();
+            userAvatarFormValidator.resetInputErrors();
+        });
+
+        openModalButton.addEventListener('click', () =>{
+            modalButton.open();
+            editFormValidator.removeButtonDisabled();
+            editFormValidator.resetInputErrors();
+
+            inputName.value = userInfo.getUserInfo().name;
+            inputAboutMe.value = userInfo.getUserInfo().info;
+        });
+
     })
     .catch((err) => {
         console.log(err);
     });
+
 //
 
 //Лайк карточки
@@ -136,19 +164,10 @@ const userInfo = new UserInfo ({
     avatar: profileAvatar
     });
 
-api.getUserMe()
-    .then ((data) => {
-        userInfo.setUserInfo(data);
-    })
-    .catch((err) => {
-        console.log(err);
-    });
 //
 
 //Изменение аватара
-openModalAvatar.addEventListener('click', () =>{
-    modalAvatar.open();
-});
+
 
 const modalAvatar = new PopupWithForm({
     popupSelector: '.modal_edit-avatar',
@@ -172,12 +191,7 @@ modalAvatar.setEventListeners();
 //
 
 //Открытие/закрытие модалки редактирование профиля
-openModalButton.addEventListener('click', () =>{
-    modalButton.open();
 
-    inputName.value = userInfo.getUserInfo().name;
-    inputAboutMe.value = userInfo.getUserInfo().info;
-});
 
 const modalButton = new PopupWithForm ({
     popupSelector: '.modal_edit-profile',
@@ -201,9 +215,7 @@ modalButton.setEventListeners();
 //
 
 //Открытие/закрытие модалки добавления новой карточки 
-openModalCard.addEventListener('click', () =>{
-    modalCard.open();
-});
+
 
 const modalCard = new PopupWithForm ({
     popupSelector: '.modal_add-card', 
@@ -211,6 +223,15 @@ const modalCard = new PopupWithForm ({
         modalCard. setTextSave();
         api.postAddCard(value)
             .then((data) => {
+                const cardsList = new Section ({
+                        renderer: (cardItem) => {
+                            const card = new Card(cardItem, handleCardClick, handleCardLike, cardDelete, '.elements-card');
+
+                            const userId = userInfo.getUserId();
+                            cardsList.addItem(card.generateCard(userId));
+                        }
+                    }, elements
+                );
                 cardsList.renderer(data);
                 modalCard.close();
             })

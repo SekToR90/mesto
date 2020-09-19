@@ -3,17 +3,8 @@
   <component name="ChangeListManager">
     <list default="true" id="44f2c1fc-4df8-4aa6-80eb-899f0f7d3b1f" name="Default Changelist" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/blocks/modal/__button-save/modal__button-save.css" beforeDir="false" afterPath="$PROJECT_DIR$/src/blocks/modal/__button-save/modal__button-save.css" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/blocks/modal/__field/modal__field.css" beforeDir="false" afterPath="$PROJECT_DIR$/src/blocks/modal/__field/modal__field.css" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/blocks/modal/__input/modal__input.css" beforeDir="false" afterPath="$PROJECT_DIR$/src/blocks/modal/__input/modal__input.css" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/blocks/modal/__title/modal__title.css" beforeDir="false" afterPath="$PROJECT_DIR$/src/blocks/modal/__title/modal__title.css" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/components/Api.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/Api.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/components/Card.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/Card.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/components/PopupWithForm.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/PopupWithForm.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/components/PopupWithSubmit.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/PopupWithSubmit.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/components/UserInfo.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/UserInfo.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/index.html" beforeDir="false" afterPath="$PROJECT_DIR$/src/index.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/pages/index.css" beforeDir="false" afterPath="$PROJECT_DIR$/src/pages/index.css" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/components/FormValidator.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/FormValidator.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/components/Section.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/Section.js" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/pages/index.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/pages/index.js" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
@@ -90,7 +81,11 @@
       <workItem from="1600159524724" duration="22672000" />
       <workItem from="1600247596689" duration="22110000" />
       <workItem from="1600334276890" duration="30714000" />
-      <workItem from="1600419380185" duration="5722000" />
+      <workItem from="1600419380185" duration="6929000" />
+      <workItem from="1600428715463" duration="623000" />
+      <workItem from="1600453915900" duration="1041000" />
+      <workItem from="1600468883760" duration="100000" />
+      <workItem from="1600514478208" duration="14191000" />
     </task>
     <servers />
   </component>
